@@ -1,0 +1,73 @@
+*{
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Apple Color Emoji,Helvetica,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+body{
+    background-color: #131417;
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.add-notes{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    min-height: 2.75rem;
+}
+
+#add-notes-input{
+    border-radius: 5px;
+    border: solid 2px #D3D3D3;
+    padding: .5rem;
+    min-width: 40vw;
+    font-size: 16px;
+    background-color: #252830;
+}
+
+#add-notes-buttons{
+    transition-property: box-shadow,border;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    background-color: #db4c3f !important;
+    border-color: #db4c3f !important;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#add-notes-buttons{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.notes-holder{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #21232a;
+    padding-top: 1.875rem;
+    margin: 1rem;
+    min-height: 40vh;
+}
+
+.notes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#close-button{
+    transition-property: box-shadow,border;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    background-color: rgba(3, 166, 44, 0.8) !important;
+    border-color: rgba(3, 166, 44, 0.8) !important;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: .2rem;
+}
