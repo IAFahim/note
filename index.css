@@ -16,7 +16,7 @@ h1{
 
 .add-notes{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: .5rem;
     min-height: 2.75rem;
 }
@@ -25,7 +25,7 @@ h1{
     border-radius: 5px;
     border: solid 2px #D3D3D3;
     padding: .5rem;
-    min-width: 40vw;
+    min-width: 70vw;
     font-size: 16px;
     background-color: #252830;
 }
@@ -43,31 +43,31 @@ h1{
 #add-notes-buttons{
     padding-left: 1rem;
     padding-right: 1rem;
+    height: 2rem;
 }
 
-.notes-holder{
-    padding-left: 2rem;
-    padding-right: 2rem;
+#notes-holder{
+    padding-left: 1rem;
+    padding-right: 1rem;
     background-color: #21232a;
     padding-top: 1.875rem;
-    margin: 1rem;
     min-height: 40vh;
 }
 
 .notes{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    justify-content: stretch;
+    margin-bottom: 1rem;
 }
 
-#close-button{
-    transition-property: box-shadow,border;
-    transition-duration: .3s;
-    transition-timing-function: ease;
-    background-color: rgba(3, 166, 44, 0.8) !important;
-    border-color: rgba(3, 166, 44, 0.8) !important;
-    border-radius: 5px;
-    font-size: 14px;
-    padding: .2rem;
+.checkbox-done-task{
+    scale: 1.5;
+    margin: 10px;
+}
+
+.note-text{
+    align-items: center;
+    background-color: darkgray;
+    border-radius: .2rem;
+    padding: 1rem;
 }
