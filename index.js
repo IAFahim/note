@@ -5,11 +5,11 @@ class Note {
     _button_ID;
     _source;
 
-    constructor(key, targetClass,source, button_ID) {
+    constructor(key, targetClass, source, button_ID) {
 
         this._key = key;
         this._targetClass = targetClass;
-        this._source=source;
+        this._source = source;
         this._button_ID = button_ID;
 
         if (localStorage.length === 0) {
@@ -38,10 +38,10 @@ class Note {
 
         let p = document.createElement("p")
         p.setAttribute("class", "note-text")
-        p.innerText=text
+        p.innerText = text
 
         let element = document.createElement("div")
-        element.setAttribute("class","notes")
+        element.setAttribute("class", "notes")
         element.appendChild(input);
         element.appendChild(p)
 
@@ -49,4 +49,4 @@ class Note {
     }
 }
 
-let note = new Note("note", "notes-holder", "add-notes-input","add-notes-buttons")
+let note = new Note("note", "notes-holder", "add-notes-input", "add-notes-buttons")

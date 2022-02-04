@@ -1,2 +1,2 @@
 # note
-The challange is on
+The challenge is on
