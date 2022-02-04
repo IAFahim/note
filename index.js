@@ -1,4 +1,17 @@
 class Note {
+    _text
+    _create_time
+    _end_time
+
+    constructor(text, end_Time) {
+        this._text = text
+        this._create_time = new Date().getTime();
+        this._end_time = end_Time
+    }
+}
+
+
+class Notes {
     _notes = [];
     _key;
     _targetClass;
@@ -6,39 +19,43 @@ class Note {
     _source;
 
     constructor(key, targetClass, source, button_ID) {
-
         this._key = key;
         this._targetClass = targetClass;
         this._source = source;
         this._button_ID = button_ID;
+        this.notes = JSON.parse(localStorage.getItem(this._key));
+    }
 
-        if (localStorage.length === 0) {
-            this._notes.push("add Note")
-            localStorage.setItem(this._key, JSON.stringify(this._notes))
+    set notes(obj) {
+        if (!obj) {
+            let text = "add Note"
+            this.save(this.add(new Note(text, 0)))
         } else {
-            this._notes = JSON.parse(localStorage.getItem(this._key));
-            for (let i = 0; i < this._notes.length; i++) {
-                console.log(this._notes[i])
-            }
+            this._notes = obj
+            this._notes.forEach(note => {
+                console.log(note)
+                this.add(note)
+            })
         }
         document.getElementById(this._button_ID).addEventListener("click", ev => {
-            this.add(document.getElementById(this._source).value)
+            let str = document.getElementById(this._source).value;
+            this.save(this.add(new Note(str,0)))
         })
     }
 
-    get notes() {
-        return this._notes;
+    save(note) {
+        this._notes.push(note)
+        localStorage.setItem(this._key, JSON.stringify(this._notes))
     }
 
-    add(text) {
-
+    add(note) {
         let input = document.createElement("input")
         input.setAttribute("class", "checkbox-done-task")
         input.setAttribute("type", "checkbox")
 
         let p = document.createElement("p")
         p.setAttribute("class", "note-text")
-        p.innerText = text
+        p.innerText = note._text
 
         let element = document.createElement("div")
         element.setAttribute("class", "notes")
@@ -46,7 +63,9 @@ class Note {
         element.appendChild(p)
 
         document.getElementById(this._targetClass).appendChild(element);
+
+        return note
     }
 }
 
-let note = new Note("note", "notes-holder", "add-notes-input", "add-notes-buttons")
+let note = new Notes("note", "notes-holder", "add-notes-input", "add-notes-buttons")
