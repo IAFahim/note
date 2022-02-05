@@ -4,9 +4,6 @@ class Note {
         this._create_time = new Date().getTime();
         this._end_time = end_Time;
     }
-    get text() {
-        return this._text;
-    }
 }
 class Notes {
     constructor(key, targetClass, source, button_ID) {
@@ -20,7 +17,8 @@ class Notes {
     set notes(obj) {
         if (!obj) {
             let text = "add Note";
-            this.save(this.add(new Note(text, 0)));
+            let note = new Note(text, 0);
+            this.save(this.add(note));
         }
         else {
             this._notes = obj;
@@ -36,7 +34,6 @@ class Notes {
     }
     save(note) {
         this._notes.push(note);
-        console.log(note.text);
         localStorage.setItem(this._key, JSON.stringify(this._notes));
     }
     add(note) {
