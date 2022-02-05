@@ -8,6 +8,10 @@ class Note {
         this._create_time = new Date().getTime();
         this._end_time = end_Time
     }
+
+    get text() {
+        return this._text
+    }
 }
 
 
@@ -38,17 +42,18 @@ class Notes {
             })
         }
         document.getElementById(this._button_ID).addEventListener("click", ev => {
-            let str = document.getElementById(this._source).value;
-            this.save(this.add(new Note(str,0)))
+            let str = (document.getElementById(this._source) as HTMLInputElement).value;
+            this.save(this.add(new Note(str, 0)))
         })
     }
 
-    save(note) {
+    save(note: Note) {
         this._notes.push(note)
+        console.log(note.text)
         localStorage.setItem(this._key, JSON.stringify(this._notes))
     }
 
-    add(note) {
+    add(note: Note) {
         let input = document.createElement("input")
         input.setAttribute("class", "checkbox-done-task")
         input.setAttribute("type", "checkbox")
