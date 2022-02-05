@@ -8,10 +8,6 @@ class Note {
         this._create_time = new Date().getTime();
         this._end_time = end_Time
     }
-
-    get text() {
-        return this._text
-    }
 }
 
 
@@ -33,7 +29,8 @@ class Notes {
     set notes(obj) {
         if (!obj) {
             let text = "add Note"
-            this.save(this.add(new Note(text, 0)))
+            let note: Note= new Note(text,0)
+            this.save(this.add(note))
         } else {
             this._notes = obj
             this._notes.forEach(note => {
@@ -49,7 +46,6 @@ class Notes {
 
     save(note: Note) {
         this._notes.push(note)
-        console.log(note.text)
         localStorage.setItem(this._key, JSON.stringify(this._notes))
     }
 
