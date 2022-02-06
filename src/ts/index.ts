@@ -1,9 +1,9 @@
 class Note {
-    _text
-    _create_time
-    _end_time
+    _text: string
+    _create_time :number
+    _end_time:number
 
-    constructor(text: string, end_Time: Date) {
+    constructor(text: string, end_Time: number) {
         this._text = text
         this._create_time = new Date().getTime();
         this._end_time = end_Time
@@ -13,10 +13,10 @@ class Note {
 
 class Notes {
     _notes: Note[] = [];
-    _key;
-    _targetClass;
-    _button_ID;
-    _source;
+    _key: string;
+    _targetClass: string;
+    _button_ID: string;
+    _source: string;
 
     constructor(key: string, targetClass: string, source: string, button_ID: string) {
         this._key = key;
@@ -31,7 +31,7 @@ class Notes {
             let text = "add Note"
             let date: Date = new Date()
             date.setHours(24)
-            let note: Note = new Note(text, date)
+            let note: Note = new Note(text, date.getTime())
             this.save(this.add(note))
         } else {
             this._notes = obj
@@ -42,8 +42,7 @@ class Notes {
         }
         document.getElementById(this._button_ID).addEventListener("click", () => {
             let str = (document.getElementById(this._source) as HTMLInputElement).value;
-            let date: Date = new Date()
-            date.setHours(24)
+            let date: number = new Date().setHours(24)
             this.save(this.add(new Note(str, date)))
         })
     }
@@ -68,7 +67,9 @@ class Notes {
         element.appendChild(p)
 
         document.getElementById(this._targetClass).appendChild(element);
-
+        element.addEventListener("click", ()=>{
+            element.remove();
+        })
         return note
     }
 }

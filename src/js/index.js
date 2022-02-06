@@ -22,7 +22,7 @@ var Notes = /** @class */ (function () {
                 var text = "add Note";
                 var date = new Date();
                 date.setHours(24);
-                var note = new Note(text, date);
+                var note = new Note(text, date.getTime());
                 this.save(this.add(note));
             }
             else {
@@ -34,8 +34,7 @@ var Notes = /** @class */ (function () {
             }
             document.getElementById(this._button_ID).addEventListener("click", function () {
                 var str = document.getElementById(_this._source).value;
-                var date = new Date();
-                date.setHours(24);
+                var date = new Date().setHours(24);
                 _this.save(_this.add(new Note(str, date)));
             });
         },
@@ -58,6 +57,9 @@ var Notes = /** @class */ (function () {
         element.appendChild(input);
         element.appendChild(p);
         document.getElementById(this._targetClass).appendChild(element);
+        element.addEventListener("click", function () {
+            element.remove();
+        });
         return note;
     };
     return Notes;

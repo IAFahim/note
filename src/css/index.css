@@ -19,6 +19,7 @@ h1{
     justify-content: space-evenly;
     gap: .5rem;
     min-height: 2.75rem;
+    background: radial-gradient(circle at 0% -25%,#FF8947 0%,#FF8354 0,#DA2C94 42%,#3E13A5 110%);
 }
 
 #add-notes-input{
