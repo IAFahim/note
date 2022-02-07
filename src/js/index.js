@@ -28,7 +28,6 @@ var Notes = /** @class */ (function () {
             else {
                 this._notes = obj;
                 this._notes.forEach(function (note) {
-                    console.log(note);
                     _this.add(note);
                 });
             }

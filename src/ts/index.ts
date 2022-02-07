@@ -36,7 +36,6 @@ class Notes {
         } else {
             this._notes = obj
             this._notes.forEach(note => {
-                console.log(note)
                 this.add(note)
             })
         }
