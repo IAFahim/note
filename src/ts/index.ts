@@ -1,7 +1,7 @@
 class Note {
     _text: string
-    _create_time :number
-    _end_time:number
+    _create_time: number
+    _end_time: number
 
     constructor(text: string, end_Time: number) {
         this._text = text
@@ -66,11 +66,28 @@ class Notes {
         element.appendChild(p)
 
         document.getElementById(this._targetClass).appendChild(element);
-        element.addEventListener("click", ()=>{
-            element.remove();
+        element.addEventListener("click", (e) => {
+            this.remove(element)
         })
         return note
     }
+
+    remove(element: HTMLElement) {
+        let index = 0;
+        let toBeRemovedElement = element.getElementsByClassName("checkbox-done-task")[0] as HTMLInputElement;
+        if (toBeRemovedElement.checked) {
+            element.parentNode.childNodes.forEach((e, i) => {
+                if (e === element) {
+                    this._notes.splice(i - 1, 1)
+                    element.remove()
+                    return
+                    // this.remove(element,i)
+                }
+            })
+        }
+        localStorage.setItem(this._key, JSON.stringify(this._notes))
+    }
+
 }
 
 new Notes("note", "notes-holder", "add-notes-input", "add-notes-buttons")
