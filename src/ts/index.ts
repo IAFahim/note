@@ -66,22 +66,20 @@ class Notes {
         element.appendChild(p)
 
         document.getElementById(this._targetClass).appendChild(element);
-        element.addEventListener("click", (e) => {
+        element.addEventListener("click", () => {
             this.remove(element)
         })
         return note
     }
 
     remove(element: HTMLElement) {
-        let index = 0;
         let toBeRemovedElement = element.getElementsByClassName("checkbox-done-task")[0] as HTMLInputElement;
         if (toBeRemovedElement.checked) {
             element.parentNode.childNodes.forEach((e, i) => {
                 if (e === element) {
                     this._notes.splice(i - 1, 1)
                     element.remove()
-                    return
-                    // this.remove(element,i)
+                    return;
                 }
             })
         }

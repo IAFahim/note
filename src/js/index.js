@@ -57,14 +57,13 @@ var Notes = /** @class */ (function () {
         element.appendChild(input);
         element.appendChild(p);
         document.getElementById(this._targetClass).appendChild(element);
-        element.addEventListener("click", function (e) {
+        element.addEventListener("click", function () {
             _this.remove(element);
         });
         return note;
     };
     Notes.prototype.remove = function (element) {
         var _this = this;
-        var index = 0;
         var toBeRemovedElement = element.getElementsByClassName("checkbox-done-task")[0];
         if (toBeRemovedElement.checked) {
             element.parentNode.childNodes.forEach(function (e, i) {
@@ -72,7 +71,6 @@ var Notes = /** @class */ (function () {
                     _this._notes.splice(i - 1, 1);
                     element.remove();
                     return;
-                    // this.remove(element,i)
                 }
             });
         }
